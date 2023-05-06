@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
 import { useProductsStore } from '@/store/products'
 import type { Product } from '@/types'
 import { computed } from 'vue'
 import { formatDate } from '@/utils/format'
-
-const $router = useRouter()
 
 const productsStore = useProductsStore()
 

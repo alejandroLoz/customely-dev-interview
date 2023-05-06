@@ -1,24 +1,25 @@
 import { defineStore } from 'pinia'
+import type { Product } from "@/types"
 
 export const useProductsStore = defineStore({
   id: 'products',
   state: () => ({
-    products: [],
-    selectedProduct: null
+    products: [] as Product[],
+    selectedProduct: null as Product|null
   }),
   getters: {
-    getProducts() {
+    getProducts() : Product[] {
       return this.products
     },
-    getSelectedProduct() {
+    getSelectedProduct() : Product|null {
       return this.selectedProduct
     }
   },
   actions: {
-    setProducts(products) {
+    setProducts(products : Product[]) {
       this.products = products
     },
-    setSelectedProduct(product) {
+    setSelectedProduct(product: Product) {
       this.selectedProduct = product
     }
   }
