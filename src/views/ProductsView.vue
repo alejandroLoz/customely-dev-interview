@@ -64,14 +64,14 @@ watch(
   <main class="w-full flex flex-col items-center mx-4 mt-8">
     <div class="w-full flex justify-center">
       <div v-if="isLoading" class="loading">Loading...</div>
-      <!-- <ProductListWrapper v-else :products="products" /> -->
+      <ProductListWrapper v-else :products="products" />
     </div>
     <div class="mt-14" v-if="!isLoading">
-      <!-- <vue-awesome-paginate
+      <vue-awesome-paginate
         :items-per-page="8"
         v-model="currentPage"
         :on-click="onPaginationClick"
-      /> -->
+      />
     </div>
   </main>
 </template>

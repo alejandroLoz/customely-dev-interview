@@ -14,12 +14,8 @@ const textsPreviews = ref([])
 
 const fieldsInputs = reactive<any[]>([])
 const fieldsFontsInputs = ref<any[]>([])
-// 38f00e2b-3a88-4b0f-9a79-e7fe3b029d99
 
 onMounted(() => {
-  console.log(selectedProduct.value)
-  // console.log($route.meta.product);
-  // // engraver.render();
   engraver.init('preview-canvas')
   engraver.setProduct(selectedProduct.value.id || $route.params.id)
   // window.dispatchEvent(new CustomEvent('customily-product-loaded'
@@ -28,23 +24,12 @@ onMounted(() => {
       ...textPreview,
       fontsMap: JSON.parse(textPreview.fontsMap)
     }))
-    // textsPreviews.value = engraver.currentProduct.preview.textsPreview.map((textPreview) => ({
-    //   ...textPreview,
-    //   fontsMap: JSON.stringify(textPreview.fontsMap),
-    // }));
-    // engraver.setText(1, "texs")
 
     textsPreviews.value = mappedTextsPreview
 
     console.log(mappedTextsPreview)
   }, 1000)
 })
-
-// watch(fieldsInputs, (newVal) => {
-//   newVal.forEach((text, index) => {
-//     engraver.setText(index + 1, text);
-//   });
-// });
 
 function typeInAField(textPreview: any, text: string) {
   const selectedFont = [...fieldsFontsInputs.value]
@@ -70,10 +55,10 @@ function onSelectFont(textPreview: any, font: number|string) {
       <canvas id="preview-canvas" class="w-1/2"></canvas>
       <form class="w-1/2 bg-[#EBEBEB] p-4" method="post" target="_top">
         <h3 class="flex justify-between text-lg">
-          <!-- {{ selectedProduct.name }} -->
+          {{ selectedProduct.name }}
 
           <span class="text-gray-400 text-sm">
-            <!-- {{ formatDate(selectedProduct.modifiedDate) }} -->
+            {{ formatDate(selectedProduct.modifiedDate) }}
           </span>
         </h3>
 
@@ -82,20 +67,20 @@ function onSelectFont(textPreview: any, font: number|string) {
           v-for="(textPreview, index) in textsPreviews"
           :key="index"
         >
-          <!-- <label :for="`textField${textPreview.id}`"> Line {{ textPreview.id }} </label> -->
+          <label :for="`textField${textPreview.id}`"> Line {{ textPreview.id }} </label>
 
-          <!-- <input
+          <input
             :id="`textField${textPreview.id}`"
             :name="`textField{{ textPreview.id }}`"
             type="text"
             v-model="fieldsInputs[index]"
             class="w-full"
             @input="($event) => typeInAField(textPreview, $event.target?.value)"
-          /> -->
+          />
 
-          <!-- <label :for="`textSelectFont${textPreview.id}`"> Line {{ textPreview.id }} Font </label> -->
+          <label :for="`textSelectFont${textPreview.id}`"> Line {{ textPreview.id }} Font </label>
 
-          <!-- <select
+          <select
             :name="`textSelectFont${textPreview.id}`"
             :id="`textSelectFont${textPreview.id}`"
             @change="onSelectFont(textPreview, $event.target.value)"
@@ -103,7 +88,7 @@ function onSelectFont(textPreview: any, font: number|string) {
             <option v-for="(font, index) in textPreview.fontsMap" :key="index" :value="font[0]">
               Font {{ font[0] }}
             </option>
-          </select> -->
+          </select>
         </div>
       </form>
     </div>
